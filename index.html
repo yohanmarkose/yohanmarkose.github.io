@@ -1,0 +1,1262 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Yohan Markose - Data Engineer & Software Developer specializing in Python, SQL, and Big Data Analytics"
+    />
+    <meta
+      name="keywords"
+      content="Data Engineer, Software Developer, Python, SQL, Big Data, Machine Learning"
+    />
+    <meta name="author" content="Yohan Markose" />
+    <title>Yohan Markose - Data Engineer Portfolio</title>
+
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      :root {
+        --primary-color: #2563eb;
+        --secondary-color: #0f172a;
+        --accent-color: #3b82f6;
+        --text-primary: #1e293b;
+        --text-secondary: #64748b;
+        --background: #ffffff;
+        --card-background: #f8fafc;
+        --border-color: #e2e8f0;
+        --gradient-start: #3b82f6;
+        --gradient-end: #2563eb;
+      }
+
+      [data-theme="dark"] {
+        --primary-color: #3b82f6;
+        --secondary-color: #f8fafc;
+        --accent-color: #60a5fa;
+        --text-primary: #f1f5f9;
+        --text-secondary: #cbd5e1;
+        --background: #0f172a;
+        --card-background: #1e293b;
+        --border-color: #334155;
+        --gradient-start: #60a5fa;
+        --gradient-end: #3b82f6;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+          "Helvetica Neue", Arial, sans-serif;
+        line-height: 1.6;
+        color: var(--text-primary);
+        background-color: var(--background);
+        transition: all 0.3s ease;
+        overflow-x: hidden;
+      }
+
+      /* Navigation */
+      nav {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(10px);
+        box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+        z-index: 1000;
+        transition: all 0.3s ease;
+      }
+
+      [data-theme="dark"] nav {
+        background: rgba(15, 23, 42, 0.95);
+      }
+
+      .nav-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 1rem 2rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .logo {
+        font-size: 1.5rem;
+        font-weight: 700;
+        background: linear-gradient(
+          135deg,
+          var(--gradient-start),
+          var(--gradient-end)
+        );
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        animation: gradient 3s ease infinite;
+      }
+
+      @keyframes gradient {
+        0%,
+        100% {
+          background-position: 0% 50%;
+        }
+        50% {
+          background-position: 100% 50%;
+        }
+      }
+
+      .nav-links {
+        display: flex;
+        gap: 2rem;
+        align-items: center;
+      }
+
+      .nav-links a {
+        text-decoration: none;
+        color: var(--text-primary);
+        font-weight: 500;
+        position: relative;
+        transition: color 0.3s ease;
+      }
+
+      .nav-links a::after {
+        content: "";
+        position: absolute;
+        bottom: -5px;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background: var(--accent-color);
+        transition: width 0.3s ease;
+      }
+
+      .nav-links a:hover::after {
+        width: 100%;
+      }
+
+      .theme-toggle {
+        background: none;
+        border: none;
+        cursor: pointer;
+        font-size: 1.5rem;
+        color: var(--text-primary);
+        transition: transform 0.3s ease;
+      }
+
+      .theme-toggle:hover {
+        transform: rotate(180deg);
+      }
+
+      /* Hero Section */
+      #hero {
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        position: relative;
+        overflow: hidden;
+      }
+
+      #hero::before {
+        content: "";
+        position: absolute;
+        width: 200%;
+        height: 200%;
+        background: radial-gradient(
+          circle,
+          rgba(255, 255, 255, 0.1) 1px,
+          transparent 1px
+        );
+        background-size: 50px 50px;
+        animation: backgroundMove 20s linear infinite;
+      }
+
+      @keyframes backgroundMove {
+        0% {
+          transform: translate(0, 0);
+        }
+        100% {
+          transform: translate(50px, 50px);
+        }
+      }
+
+      .hero-content {
+        text-align: center;
+        z-index: 1;
+        animation: fadeInUp 1s ease;
+        color: white;
+        padding: 2rem;
+      }
+
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .hero-content h1 {
+        font-size: 3.5rem;
+        margin-bottom: 1rem;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+      }
+
+      .hero-content p {
+        font-size: 1.5rem;
+        margin-bottom: 2rem;
+        opacity: 0.9;
+      }
+
+      .cta-button {
+        display: inline-block;
+        padding: 1rem 2rem;
+        background: white;
+        color: #667eea;
+        text-decoration: none;
+        border-radius: 50px;
+        font-weight: 600;
+        transition: all 0.3s ease;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+      }
+
+      .cta-button:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+      }
+
+      /* Sections */
+      section {
+        padding: 5rem 2rem;
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      .section-title {
+        font-size: 2.5rem;
+        text-align: center;
+        margin-bottom: 3rem;
+        position: relative;
+        animation: fadeIn 1s ease;
+      }
+
+      .section-title::after {
+        content: "";
+        position: absolute;
+        bottom: -10px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 60px;
+        height: 4px;
+        background: linear-gradient(
+          135deg,
+          var(--gradient-start),
+          var(--gradient-end)
+        );
+        border-radius: 2px;
+      }
+
+      /* About Section */
+      .about-content {
+        display: grid;
+        grid-template-columns: 1fr 2fr;
+        gap: 3rem;
+        align-items: center;
+      }
+
+      .about-image {
+        width: 250px;
+        height: 250px;
+        background: linear-gradient(135deg, #667eea, #764ba2);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 5rem;
+        color: white;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        animation: float 3s ease-in-out infinite;
+      }
+
+      @keyframes float {
+        0%,
+        100% {
+          transform: translateY(0);
+        }
+        50% {
+          transform: translateY(-20px);
+        }
+      }
+
+      .about-text {
+        line-height: 1.8;
+      }
+
+      .about-text h3 {
+        color: var(--accent-color);
+        margin-bottom: 1rem;
+      }
+
+      /* Skills Section */
+      .skills-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2rem;
+      }
+
+      .skill-card {
+        background: var(--card-background);
+        padding: 2rem;
+        border-radius: 12px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+        transition: all 0.3s ease;
+        opacity: 0;
+        animation: fadeInUp 0.6s ease forwards;
+      }
+
+      .skill-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+      }
+
+      .skill-category {
+        font-size: 1.2rem;
+        font-weight: 600;
+        color: var(--accent-color);
+        margin-bottom: 1rem;
+      }
+
+      .skill-list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+      }
+
+      .skill-tag {
+        background: var(--accent-color);
+        color: white;
+        padding: 0.4rem 0.8rem;
+        border-radius: 20px;
+        font-size: 0.9rem;
+        transition: all 0.3s ease;
+      }
+
+      .skill-tag:hover {
+        transform: scale(1.05);
+        box-shadow: 0 3px 10px rgba(59, 130, 246, 0.3);
+      }
+
+      /* Experience Section */
+      .timeline {
+        position: relative;
+        padding-left: 3rem;
+      }
+
+      .timeline::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 0;
+        height: 100%;
+        width: 2px;
+        background: var(--border-color);
+      }
+
+      .timeline-item {
+        position: relative;
+        padding-bottom: 3rem;
+        opacity: 0;
+        animation: slideInLeft 0.6s ease forwards;
+      }
+
+      @keyframes slideInLeft {
+        from {
+          opacity: 0;
+          transform: translateX(-30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateX(0);
+        }
+      }
+
+      .timeline-item::before {
+        content: "";
+        position: absolute;
+        left: -3.5rem;
+        top: 0;
+        width: 12px;
+        height: 12px;
+        background: var(--accent-color);
+        border-radius: 50%;
+        box-shadow: 0 0 0 4px var(--background);
+      }
+
+      .timeline-content {
+        background: var(--card-background);
+        padding: 1.5rem;
+        border-radius: 12px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+      }
+
+      .timeline-date {
+        color: var(--accent-color);
+        font-weight: 600;
+        margin-bottom: 0.5rem;
+      }
+
+      .timeline-title {
+        font-size: 1.3rem;
+        margin-bottom: 0.5rem;
+      }
+
+      .timeline-company {
+        color: var(--text-secondary);
+        margin-bottom: 1rem;
+      }
+
+      /* Projects Section */
+      .projects-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+        gap: 2rem;
+      }
+
+      .project-card {
+        background: var(--card-background);
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+        transition: all 0.3s ease;
+        opacity: 0;
+        animation: fadeIn 0.6s ease forwards;
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+
+      .project-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+      }
+
+      .project-header {
+        background: linear-gradient(
+          135deg,
+          var(--gradient-start),
+          var(--gradient-end)
+        );
+        padding: 1.5rem;
+        color: white;
+      }
+
+      .project-content {
+        padding: 1.5rem;
+      }
+
+      .project-tech {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        margin-top: 1rem;
+      }
+
+      .tech-tag {
+        background: var(--border-color);
+        color: var(--text-primary);
+        padding: 0.3rem 0.6rem;
+        border-radius: 15px;
+        font-size: 0.8rem;
+      }
+
+      /* Contact Section */
+      #contact {
+        background: var(--card-background);
+        text-align: center;
+      }
+
+      .contact-links {
+        display: flex;
+        justify-content: center;
+        gap: 2rem;
+        margin-top: 2rem;
+      }
+
+      .contact-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 1rem 2rem;
+        background: var(--accent-color);
+        color: white;
+        text-decoration: none;
+        border-radius: 50px;
+        transition: all 0.3s ease;
+      }
+
+      .contact-link:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 5px 20px rgba(59, 130, 246, 0.4);
+      }
+
+      /* Mobile Menu */
+      .mobile-menu-toggle {
+        display: none;
+        background: none;
+        border: none;
+        cursor: pointer;
+        padding: 0.5rem;
+      }
+
+      .mobile-menu-toggle span {
+        display: block;
+        width: 25px;
+        height: 3px;
+        background: var(--text-primary);
+        margin: 5px 0;
+        transition: all 0.3s ease;
+      }
+
+      /* Responsive Design */
+      @media (max-width: 768px) {
+        .nav-links {
+          display: none;
+          position: absolute;
+          top: 100%;
+          left: 0;
+          width: 100%;
+          background: var(--background);
+          flex-direction: column;
+          padding: 2rem;
+          box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav-links.active {
+          display: flex;
+        }
+
+        .mobile-menu-toggle {
+          display: block;
+        }
+
+        .hero-content h1 {
+          font-size: 2.5rem;
+        }
+
+        .hero-content p {
+          font-size: 1.2rem;
+        }
+
+        .about-content {
+          grid-template-columns: 1fr;
+          text-align: center;
+        }
+
+        .about-image {
+          margin: 0 auto;
+        }
+
+        .timeline {
+          padding-left: 2rem;
+        }
+
+        .timeline-item::before {
+          left: -2.5rem;
+        }
+
+        .contact-links {
+          flex-direction: column;
+          align-items: center;
+        }
+      }
+
+      /* Scroll animations */
+      .fade-in {
+        opacity: 0;
+        transition: opacity 0.6s ease-in-out;
+      }
+
+      .fade-in.visible {
+        opacity: 1;
+      }
+
+      .slide-in-left {
+        opacity: 0;
+        transform: translateX(-50px);
+        transition: all 0.6s ease-out;
+      }
+
+      .slide-in-left.visible {
+        opacity: 1;
+        transform: translateX(0);
+      }
+
+      .slide-in-right {
+        opacity: 0;
+        transform: translateX(50px);
+        transition: all 0.6s ease-out;
+      }
+
+      .slide-in-right.visible {
+        opacity: 1;
+        transform: translateX(0);
+      }
+
+      /* Back to top button */
+      .back-to-top {
+        position: fixed;
+        bottom: 2rem;
+        right: 2rem;
+        background: var(--accent-color);
+        color: white;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-decoration: none;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.3s ease;
+      }
+
+      .back-to-top.visible {
+        opacity: 1;
+        visibility: visible;
+      }
+
+      .back-to-top:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+      }
+
+      /* Loading animation */
+      .loader {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: var(--background);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 9999;
+        transition: opacity 0.5s ease;
+      }
+
+      .loader.hidden {
+        opacity: 0;
+        pointer-events: none;
+      }
+
+      .loader-circle {
+        width: 60px;
+        height: 60px;
+        border: 4px solid var(--border-color);
+        border-top-color: var(--accent-color);
+        border-radius: 50%;
+        animation: spin 1s linear infinite;
+      }
+
+      @keyframes spin {
+        to {
+          transform: rotate(360deg);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Loading Animation -->
+    <div class="loader" id="loader">
+      <div class="loader-circle"></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav id="navbar">
+      <div class="nav-container">
+        <div class="logo">YM</div>
+        <div class="nav-links" id="navLinks">
+          <a href="#hero">Home</a>
+          <a href="#about">About</a>
+          <a href="#skills">Skills</a>
+          <a href="#experience">Experience</a>
+          <a href="#projects">Projects</a>
+          <a href="#education">Education</a>
+          <a href="#contact">Contact</a>
+          <button
+            class="theme-toggle"
+            id="themeToggle"
+            aria-label="Toggle theme"
+          >
+            🌙
+          </button>
+        </div>
+        <button
+          class="mobile-menu-toggle"
+          id="mobileMenuToggle"
+          aria-label="Toggle menu"
+        >
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="hero">
+      <div class="hero-content">
+        <h1>Yohan M Markose</h1>
+        <p>Data Engineer | Software Developer | Big Data Specialist</p>
+        <a href="#contact" class="cta-button">Get In Touch</a>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+      <h2 class="section-title">About Me</h2>
+      <div class="about-content">
+        <div class="about-image fade-in">👨‍💻</div>
+        <div class="about-text fade-in">
+          <h3>Data Engineer with 3+ Years of Experience</h3>
+          <p>
+            I'm a passionate Data Engineer currently pursuing my Master's in
+            Information Systems at Northeastern University (GPA: 4.0). With over
+            3 years of professional experience at IQVIA, I specialize in
+            building scalable data pipelines, implementing ETL processes, and
+            developing automation solutions that have saved 250+ hours per
+            month.
+          </p>
+          <p>
+            My expertise spans Python, SQL, and various big data technologies.
+            I've led automation teams, mentored colleagues, and consistently
+            delivered high-impact solutions that reduce processing time by up to
+            80%. I'm actively seeking internship or full-time opportunities
+            where I can leverage my skills in data engineering and analytics to
+            drive business value.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills">
+      <h2 class="section-title">Technical Skills</h2>
+      <div class="skills-grid">
+        <div class="skill-card">
+          <h3 class="skill-category">Programming Languages</h3>
+          <div class="skill-list">
+            <span class="skill-tag">Python</span>
+            <span class="skill-tag">SQL</span>
+            <span class="skill-tag">Java</span>
+            <span class="skill-tag">C++</span>
+            <span class="skill-tag">HTML5</span>
+            <span class="skill-tag">CSS3</span>
+          </div>
+        </div>
+        <div class="skill-card">
+          <h3 class="skill-category">Python Libraries & Frameworks</h3>
+          <div class="skill-list">
+            <span class="skill-tag">NumPy</span>
+            <span class="skill-tag">Pandas</span>
+            <span class="skill-tag">Scikit-learn</span>
+            <span class="skill-tag">TensorFlow</span>
+            <span class="skill-tag">FastAPI</span>
+            <span class="skill-tag">LangChain</span>
+            <span class="skill-tag">LangGraph</span>
+            <span class="skill-tag">Streamlit</span>
+          </div>
+        </div>
+        <div class="skill-card">
+          <h3 class="skill-category">Tools & Platforms</h3>
+          <div class="skill-list">
+            <span class="skill-tag">Apache Airflow</span>
+            <span class="skill-tag">Docker</span>
+            <span class="skill-tag">Git/GitHub</span>
+            <span class="skill-tag">Power BI</span>
+            <span class="skill-tag">Pinecone</span>
+            <span class="skill-tag">ChromaDB</span>
+          </div>
+        </div>
+        <div class="skill-card">
+          <h3 class="skill-category">Database & Cloud</h3>
+          <div class="skill-list">
+            <span class="skill-tag">Snowflake</span>
+            <span class="skill-tag">MySQL</span>
+            <span class="skill-tag">dbt</span>
+            <span class="skill-tag">AWS S3</span>
+            <span class="skill-tag">Google Cloud</span>
+            <span class="skill-tag">Redis Streams</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience">
+      <h2 class="section-title">Professional Experience</h2>
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="timeline-content">
+            <div class="timeline-date">Oct 2020 - Apr 2023</div>
+            <h3 class="timeline-title">Software Developer / QA Analyst</h3>
+            <div class="timeline-company">IQVIA | Kochi, Kerala, India</div>
+            <ul>
+              <li>
+                Led automation team, reducing manual QA tasks by 250+
+                hours/month
+              </li>
+              <li>
+                Implemented Python ETL pipelines, cutting data prep time from 10
+                hours to 10 minutes
+              </li>
+              <li>
+                Automated deliverables using Selenium, saving 75+ manual hours
+                monthly
+              </li>
+              <li>
+                Developed Python scripts for multi-source data integration,
+                reducing processing time by 80%
+              </li>
+              <li>
+                Maintained SQL databases and provisioned 15+ reports monthly
+              </li>
+              <li>
+                Mentored 7 team members in Python automation and Excel data
+                analysis
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-content">
+            <div class="timeline-date">Jan 2020 - Apr 2020</div>
+            <h3 class="timeline-title">Software Developer - Intern</h3>
+            <div class="timeline-company">IQVIA | Kochi, Kerala, India</div>
+            <ul>
+              <li>Developed on-demand QA automation solutions using Python</li>
+              <li>
+                Scraped data from client dashboards using Beautiful Soup and
+                Selenium
+              </li>
+              <li>Processed and visualized data for actionable insights</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects">
+      <h2 class="section-title">Featured Projects</h2>
+      <div class="projects-grid">
+        <div class="project-card">
+          <div class="project-header">
+            <h3>NVIDIA FINRAG</h3>
+          </div>
+          <div class="project-content">
+            <p>
+              Agentic RAG pipeline providing curated financial information for
+              NVIDIA using LangGraph. Features three distinct tools: Snowflake
+              for stock analysis, RAG for quarterly reports, and Web Search for
+              real-time data.
+            </p>
+            <div class="project-tech">
+              <span class="tech-tag">LangGraph</span>
+              <span class="tech-tag">Pinecone</span>
+              <span class="tech-tag">FastAPI</span>
+              <span class="tech-tag">AWS S3</span>
+              <span class="tech-tag">Docker</span>
+            </div>
+          </div>
+        </div>
+        <div class="project-card">
+          <div class="project-header">
+            <h3>Financial RAG Pipeline</h3>
+          </div>
+          <div class="project-content">
+            <p>
+              End-to-end RAG system for NVIDIA financial reports (5 years).
+              Implemented automated data extraction, vector embeddings with 95%
+              accuracy, and containerized deployment.
+            </p>
+            <div class="project-tech">
+              <span class="tech-tag">RAG</span>
+              <span class="tech-tag">Pinecone</span>
+              <span class="tech-tag">Airflow</span>
+              <span class="tech-tag">Streamlit</span>
+              <span class="tech-tag">Docker</span>
+            </div>
+          </div>
+        </div>
+        <div class="project-card">
+          <div class="project-header">
+            <h3>Federal Reserve Economic Data Pipeline</h3>
+          </div>
+          <div class="project-content">
+            <p>
+              Built Snowflake pipeline using Snowpark for Python to extract and
+              analyze U.S. Treasury yield data. Created dashboard displaying
+              inverse treasury yield curve.
+            </p>
+            <div class="project-tech">
+              <span class="tech-tag">Snowflake</span>
+              <span class="tech-tag">Snowpark</span>
+              <span class="tech-tag">GitHub Actions</span>
+              <span class="tech-tag">S3</span>
+            </div>
+          </div>
+        </div>
+        <div class="project-card">
+          <div class="project-header">
+            <h3>Financial Statement Analytics Platform</h3>
+          </div>
+          <div class="project-content">
+            <p>
+              Architected data pipeline leveraging Airflow and Snowflake to
+              automate SEC financial dataset processing. Implemented automated
+              quality checks and built full-stack solution.
+            </p>
+            <div class="project-tech">
+              <span class="tech-tag">Snowflake</span>
+              <span class="tech-tag">Airflow</span>
+              <span class="tech-tag">DBT</span>
+              <span class="tech-tag">FastAPI</span>
+              <span class="tech-tag">AWS S3</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Education Section -->
+    <section id="education">
+      <h2 class="section-title">Education</h2>
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="timeline-content">
+            <div class="timeline-date">Sep 2024 - Expected May 2026</div>
+            <h3 class="timeline-title">
+              Master of Science in Information Systems
+            </h3>
+            <div class="timeline-company">
+              Northeastern University | Boston, MA
+            </div>
+            <p><strong>GPA: 4.0</strong></p>
+            <p>
+              Relevant Courses: Data Science Engineering Methods, Big-Data
+              Systems and Intelligence Analytics, Application Engineering &
+              Development, Programming Structures and Algorithm
+            </p>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-content">
+            <div class="timeline-date">Aug 2016 - Jun 2020</div>
+            <h3 class="timeline-title">
+              Bachelor of Technology in Mechanical Engineering
+            </h3>
+            <div class="timeline-company">
+              Mar Athanasius College of Engineering | Kerala, India
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+      <h2 class="section-title">Let's Connect</h2>
+      <p>
+        I'm actively seeking internship and full-time opportunities in Data
+        Engineering and Analytics.
+      </p>
+      <div class="contact-links">
+        <a href="mailto:markose.y@northeastern.edu" class="contact-link">
+          📧 Email Me
+        </a>
+        <a
+          href="https://www.linkedin.com/in/yohan-markose/"
+          target="_blank"
+          class="contact-link"
+        >
+          💼 LinkedIn
+        </a>
+        <a
+          href="https://github.com/yohanmarkose"
+          target="_blank"
+          class="contact-link"
+        >
+          🔗 GitHub
+        </a>
+        <a
+          href="#"
+          class="contact-link"
+          onclick="alert('Resume download functionality - Add your resume link here')"
+        >
+          📄 Download Resume
+        </a>
+      </div>
+    </section>
+
+    <!-- Back to Top Button -->
+    <a href="#hero" class="back-to-top" id="backToTop">↑</a>
+
+    <script>
+      // Page Loader
+      window.addEventListener("load", () => {
+        setTimeout(() => {
+          document.getElementById("loader").classList.add("hidden");
+        }, 500);
+      });
+
+      // Theme Toggle
+      const themeToggle = document.getElementById("themeToggle");
+      const body = document.body;
+
+      // Check for saved theme preference
+      const savedTheme = localStorage.getItem("theme");
+      if (savedTheme) {
+        body.setAttribute("data-theme", savedTheme);
+        themeToggle.textContent = savedTheme === "dark" ? "☀️" : "🌙";
+      }
+
+      themeToggle.addEventListener("click", () => {
+        const currentTheme = body.getAttribute("data-theme");
+        const newTheme = currentTheme === "dark" ? "light" : "dark";
+
+        body.setAttribute("data-theme", newTheme);
+        localStorage.setItem("theme", newTheme);
+        themeToggle.textContent = newTheme === "dark" ? "☀️" : "🌙";
+      });
+
+      // Mobile Menu Toggle
+      const mobileMenuToggle = document.getElementById("mobileMenuToggle");
+      const navLinks = document.getElementById("navLinks");
+
+      mobileMenuToggle.addEventListener("click", () => {
+        navLinks.classList.toggle("active");
+        mobileMenuToggle.classList.toggle("active");
+      });
+
+      // Close mobile menu on link click
+      document.querySelectorAll(".nav-links a").forEach((link) => {
+        link.addEventListener("click", () => {
+          navLinks.classList.remove("active");
+          mobileMenuToggle.classList.remove("active");
+        });
+      });
+
+      // Smooth scroll for navigation links
+      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener("click", function (e) {
+          e.preventDefault();
+          const target = document.querySelector(this.getAttribute("href"));
+          if (target) {
+            target.scrollIntoView({
+              behavior: "smooth",
+              block: "start",
+            });
+          }
+        });
+      });
+
+      // Navbar background on scroll
+      const navbar = document.getElementById("navbar");
+      window.addEventListener("scroll", () => {
+        if (window.scrollY > 50) {
+          navbar.style.boxShadow = "0 2px 20px rgba(0, 0, 0, 0.1)";
+        } else {
+          navbar.style.boxShadow = "none";
+        }
+      });
+
+      // Back to top button
+      const backToTop = document.getElementById("backToTop");
+      window.addEventListener("scroll", () => {
+        if (window.scrollY > 300) {
+          backToTop.classList.add("visible");
+        } else {
+          backToTop.classList.remove("visible");
+        }
+      });
+
+      // Intersection Observer for scroll animations
+      const observerOptions = {
+        threshold: 0.1,
+        rootMargin: "0px 0px -50px 0px",
+      };
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+
+            // Animate timeline items with delay
+            if (entry.target.closest(".timeline")) {
+              const timelineItems = entry.target
+                .closest(".timeline")
+                .querySelectorAll(".timeline-item");
+              timelineItems.forEach((item, index) => {
+                setTimeout(() => {
+                  item.style.opacity = "1";
+                  item.style.animation = "slideInLeft 0.6s ease forwards";
+                }, index * 200);
+              });
+            }
+
+            // Animate skill cards with delay
+            if (entry.target.querySelector(".skill-card")) {
+              const skillCards = entry.target.querySelectorAll(".skill-card");
+              skillCards.forEach((card, index) => {
+                setTimeout(() => {
+                  card.style.animation = `fadeInUp 0.6s ease forwards`;
+                  card.style.animationDelay = `${index * 0.1}s`;
+                }, index * 100);
+              });
+            }
+
+            // Animate project cards with delay
+            if (entry.target.querySelector(".project-card")) {
+              const projectCards =
+                entry.target.querySelectorAll(".project-card");
+              projectCards.forEach((card, index) => {
+                setTimeout(() => {
+                  card.style.animation = `fadeIn 0.6s ease forwards`;
+                  card.style.animationDelay = `${index * 0.1}s`;
+                }, index * 100);
+              });
+            }
+          }
+        });
+      }, observerOptions);
+
+      // Observe all sections and animated elements
+      document
+        .querySelectorAll("section, .fade-in, .slide-in-left, .slide-in-right")
+        .forEach((el) => {
+          observer.observe(el);
+        });
+
+      // Parallax effect for hero section
+      window.addEventListener("scroll", () => {
+        const scrolled = window.pageYOffset;
+        const hero = document.getElementById("hero");
+        hero.style.transform = `translateY(${scrolled * 0.5}px)`;
+      });
+
+      // Dynamic year for copyright
+      const currentYear = new Date().getFullYear();
+
+      // Add hover effect to skill tags
+      document.querySelectorAll(".skill-tag").forEach((tag) => {
+        tag.addEventListener("mouseenter", function () {
+          this.style.transform = "scale(1.05) translateY(-2px)";
+        });
+        tag.addEventListener("mouseleave", function () {
+          this.style.transform = "scale(1) translateY(0)";
+        });
+      });
+
+      // Add typewriter effect to hero title
+      const heroTitle = document.querySelector(".hero-content h1");
+      const text = heroTitle.textContent;
+      heroTitle.textContent = "";
+      let i = 0;
+
+      function typeWriter() {
+        if (i < text.length) {
+          heroTitle.textContent += text.charAt(i);
+          i++;
+          setTimeout(typeWriter, 100);
+        }
+      }
+
+      // Start typewriter effect after loader disappears
+      setTimeout(typeWriter, 1000);
+
+      // Contact form validation (if you add a form later)
+      function validateEmail(email) {
+        const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return re.test(String(email).toLowerCase());
+      }
+
+      // Add smooth hover effects to cards
+      document
+        .querySelectorAll(".project-card, .skill-card")
+        .forEach((card) => {
+          card.addEventListener("mouseenter", function () {
+            this.style.transition = "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)";
+          });
+        });
+
+      // Performance optimization - lazy load images if added
+      if ("IntersectionObserver" in window) {
+        const imageObserver = new IntersectionObserver((entries, observer) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              const img = entry.target;
+              img.src = img.dataset.src;
+              img.classList.remove("lazy");
+              imageObserver.unobserve(img);
+            }
+          });
+        });
+
+        // Observe all lazy images
+        document.querySelectorAll("img.lazy").forEach((img) => {
+          imageObserver.observe(img);
+        });
+      }
+
+      // Add keyboard navigation
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape" && navLinks.classList.contains("active")) {
+          navLinks.classList.remove("active");
+          mobileMenuToggle.classList.remove("active");
+        }
+      });
+
+      // Active nav link highlighting
+      const sections = document.querySelectorAll("section");
+      const navItems = document.querySelectorAll(".nav-links a");
+
+      window.addEventListener("scroll", () => {
+        let current = "";
+        sections.forEach((section) => {
+          const sectionTop = section.offsetTop;
+          const sectionHeight = section.clientHeight;
+          if (scrollY >= sectionTop - 200) {
+            current = section.getAttribute("id");
+          }
+        });
+
+        navItems.forEach((item) => {
+          item.style.color = "";
+          if (item.getAttribute("href").slice(1) === current) {
+            item.style.color = "var(--accent-color)";
+          }
+        });
+      });
+
+      console.log("Portfolio website loaded successfully!");
+    </script>
+  </body>
+</html>
