@@ -525,10 +525,10 @@
         transition: all 0.3s ease;
         opacity: 0;
         animation: fadeIn 0.6s ease forwards;
-        cursor: pointer;
         text-decoration: none;
         color: inherit;
         display: block;
+        position: relative;
       }
 
       @keyframes fadeIn {
@@ -580,6 +580,44 @@
         font-size: 0.95rem;
         line-height: 1.6;
         margin-bottom: 1rem;
+      }
+
+      .project-description {
+        position: relative;
+      }
+
+      .project-description.collapsed {
+        max-height: 4.5rem;
+        overflow: hidden;
+      }
+
+      .project-description.collapsed::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 1.5rem;
+        background: linear-gradient(transparent, var(--card-background));
+        pointer-events: none;
+      }
+
+      .expand-btn {
+        background: none;
+        border: none;
+        color: var(--accent-color);
+        font-size: 0.85rem;
+        font-weight: 600;
+        cursor: pointer;
+        padding: 0.25rem 0;
+        margin-top: 0.5rem;
+        transition: all 0.3s ease;
+        text-decoration: underline;
+      }
+
+      .expand-btn:hover {
+        color: var(--primary-color);
+        transform: translateY(-1px);
       }
 
       .project-tech {
@@ -1111,18 +1149,26 @@
               <h3>Venture Scope (Multi Agent - Agentic RAG Application)</h3>
             </div>
             <div class="project-content">
-              <p>
-                The project integrates data from Free Company Dataset
-                (Snowflake) combining with yfinance to fetch financial side of
-                data for available companies. Along with MCP-integration of
-                google maps to figure out the rich details on the ideal or
-                potential locations for the user. These reports are supported by
-                Q&A agents along with VC investment quarterly reports to address
-                and serve as a platform that will provide users with a base for
-                questing and analyzing his interest in specified business
-                domains, company size parameters, and location preferences to
-                generate tailored recommendations and insights.
-              </p>
+              <div class="project-description collapsed">
+                <p>
+                  The project integrates data from Free Company Dataset
+                  (Snowflake) combining with yfinance to fetch financial side of
+                  data for available companies. Along with MCP-integration of
+                  google maps to figure out the rich details on the ideal or
+                  potential locations for the user. These reports are supported
+                  by Q&A agents along with VC investment quarterly reports to
+                  address and serve as a platform that will provide users with a
+                  base for questing and analyzing his interest in specified
+                  business domains, company size parameters, and location
+                  preferences to generate tailored recommendations and insights.
+                </p>
+              </div>
+              <button
+                class="expand-btn"
+                onclick="toggleDescription(event, this)"
+              >
+                Read More
+              </button>
               <div class="project-tech">
                 <span class="tech-tag">MCP Servers</span>
                 <span class="tech-tag">LangGraph</span>
@@ -1178,19 +1224,28 @@
               <h3>Financial RAG Pipeline</h3>
             </div>
             <div class="project-content">
-              <p>
-                The project focuses on designing an AI-powered information
-                retrieval system that automates the extraction, processing, and
-                analysis of financial reports. Using Apache Airflow, the system
-                orchestrates the retrieval of NVIDIA's quarterly financial
-                statements, processes them with advanced text extraction
-                methods, and stores the data efficiently for querying. The
-                project incorporates multiple chunking techniques to optimize
-                data segmentation and embeddings to enhance retrieval
-                performance. A Streamlit-based UI enables users to explore the
-                dataset and upload their own documents for analysis, ensuring an
-                interactive and customizable experience.
-              </p>
+              <div class="project-description collapsed">
+                <p>
+                  The project focuses on designing an AI-powered information
+                  retrieval system that automates the extraction, processing,
+                  and analysis of financial reports. Using Apache Airflow, the
+                  system orchestrates the retrieval of NVIDIA's quarterly
+                  financial statements, processes them with advanced text
+                  extraction methods, and stores the data efficiently for
+                  querying. The project incorporates multiple chunking
+                  techniques to optimize data segmentation and embeddings to
+                  enhance retrieval performance. A Streamlit-based UI enables
+                  users to explore the dataset and upload their own documents
+                  for analysis, ensuring an interactive and customizable
+                  experience.
+                </p>
+              </div>
+              <button
+                class="expand-btn"
+                onclick="toggleDescription(event, this)"
+              >
+                Read More
+              </button>
               <div class="project-tech">
                 <span class="tech-tag">RAG</span>
                 <span class="tech-tag">Pinecone</span>
@@ -1275,20 +1330,28 @@
               <h3>Electric Car Emission impact - Bayesian Statistics</h3>
             </div>
             <div class="project-content">
-              <p>
-                Conducted a comprehensive Data Science analysis examining the
-                environmental impact of Electric Vehicle (EV) adoption in China,
-                accounting for both road emissions reduction and battery
-                production emissions. The analysis used Bayesian Statistics and
-                probabilistic modeling to simulate real-world scenarios based on
-                historical data. Key Components: Developed statistical models to
-                analyze historical data and identify critical transition points
-                in emissions patterns Conducted deep-dive analysis of identified
-                turning points to understand key contributing factors Created
-                forecasting models using Bayesian statistics to project future
-                emission trends and simulate long-term environmental impact
-                scenarios.
-              </p>
+              <div class="project-description collapsed">
+                <p>
+                  Conducted a comprehensive Data Science analysis examining the
+                  environmental impact of Electric Vehicle (EV) adoption in
+                  China, accounting for both road emissions reduction and
+                  battery production emissions. The analysis used Bayesian
+                  Statistics and probabilistic modeling to simulate real-world
+                  scenarios based on historical data. Key Components: Developed
+                  statistical models to analyze historical data and identify
+                  critical transition points in emissions patterns Conducted
+                  deep-dive analysis of identified turning points to understand
+                  key contributing factors Created forecasting models using
+                  Bayesian statistics to project future emission trends and
+                  simulate long-term environmental impact scenarios.
+                </p>
+              </div>
+              <button
+                class="expand-btn"
+                onclick="toggleDescription(event, this)"
+              >
+                Read More
+              </button>
               <div class="project-tech">
                 <span class="tech-tag">Python</span>
                 <span class="tech-tag">Bayesian Statistics</span>
@@ -1473,6 +1536,40 @@
         link.addEventListener("click", () => {
           navLinks.classList.remove("active");
           mobileMenuToggle.classList.remove("active");
+        });
+      });
+
+      // Toggle Description Function
+      function toggleDescription(event, button) {
+        event.preventDefault();
+        event.stopPropagation();
+
+        const description = button.previousElementSibling;
+        const isCollapsed = description.classList.contains("collapsed");
+
+        if (isCollapsed) {
+          description.classList.remove("collapsed");
+          button.textContent = "Read Less";
+        } else {
+          description.classList.add("collapsed");
+          button.textContent = "Read More";
+        }
+
+        // Prevent the click from bubbling to parent elements
+        return false;
+      }
+
+      // Add click handler for project cards
+      document.addEventListener("DOMContentLoaded", function () {
+        // Make project headers clickable for navigation
+        document.querySelectorAll(".project-header").forEach((header) => {
+          header.addEventListener("click", function (e) {
+            const projectCard = this.closest(".project-card");
+            const href = projectCard.getAttribute("href");
+            if (href) {
+              window.open(href, "_blank");
+            }
+          });
         });
       });
 
