@@ -166,7 +166,7 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        background: linear-gradient(135deg, #fb923c 0%, #f97316 100%);
         position: relative;
         overflow: hidden;
       }
@@ -288,7 +288,8 @@
       /* Full-width background sections */
       #about,
       #experience,
-      #education {
+      #education,
+      #certifications {
         background: var(--card-background);
       }
 
@@ -596,6 +597,77 @@
         font-size: 0.75rem;
       }
 
+      /* Show More/Less Projects Button */
+      .projects-toggle {
+        text-align: center;
+        margin-top: 3rem;
+      }
+
+      .show-more-btn {
+        background: var(--accent-color);
+        color: white;
+        border: none;
+        padding: 1rem 2rem;
+        border-radius: 50px;
+        font-size: 1rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      }
+
+      .show-more-btn:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+      }
+
+      /* Hidden projects initially */
+      .project-card.hidden {
+        display: none;
+      }
+
+      /* Certifications Section */
+      .certifications-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2rem;
+      }
+
+      .certification-card {
+        background: var(--card-background);
+        padding: 1.5rem;
+        border-radius: 12px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+        transition: all 0.3s ease;
+        opacity: 0;
+        animation: fadeInUp 0.6s ease forwards;
+        border-left: 4px solid var(--accent-color);
+      }
+
+      .certification-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+      }
+
+      .certification-title {
+        font-size: 1.1rem;
+        font-weight: 600;
+        color: var(--text-primary);
+        margin-bottom: 0.5rem;
+      }
+
+      .certification-date {
+        color: var(--accent-color);
+        font-weight: 600;
+        font-size: 0.9rem;
+      }
+
+      .certification-icon {
+        font-size: 2rem;
+        margin-bottom: 1rem;
+        display: block;
+      }
+
       /* Contact Section */
       #contact {
         background: linear-gradient(
@@ -836,6 +908,7 @@
           <a href="#experience">Experience</a>
           <a href="#projects">Projects</a>
           <a href="#education">Education</a>
+          <a href="#certifications">Certifications</a>
           <a href="#contact">Contact</a>
           <button
             class="theme-toggle"
@@ -1026,7 +1099,8 @@
     <section id="projects">
       <div class="section-content">
         <h2 class="section-title">Projects</h2>
-        <div class="projects-grid">
+        <div class="projects-grid" id="projectsGrid">
+          <!-- Initially Visible Projects -->
           <a
             href="https://github.com/BigDataIA-Spring2025-4/Venture-Scope.git"
             class="project-card"
@@ -1038,7 +1112,7 @@
             </div>
             <div class="project-content">
               <p>
-                the project integrates data from Free Company Dataset
+                The project integrates data from Free Company Dataset
                 (Snowflake) combining with yfinance to fetch financial side of
                 data for available companies. Along with MCP-integration of
                 google maps to figure out the rich details on the ideal or
@@ -1063,6 +1137,7 @@
               </div>
             </div>
           </a>
+
           <a
             href="https://github.com/BigDataIA-Spring2025-4/DAMG7245_Assignment05_Part01.git"
             class="project-card"
@@ -1092,6 +1167,7 @@
               </div>
             </div>
           </a>
+
           <a
             href="https://github.com/BigDataIA-Spring2025-4/DAMG7245_Assignment04_Part02.git"
             class="project-card"
@@ -1106,7 +1182,7 @@
                 The project focuses on designing an AI-powered information
                 retrieval system that automates the extraction, processing, and
                 analysis of financial reports. Using Apache Airflow, the system
-                orchestrates the retrieval of NVIDIA’s quarterly financial
+                orchestrates the retrieval of NVIDIA's quarterly financial
                 statements, processes them with advanced text extraction
                 methods, and stores the data efficiently for querying. The
                 project incorporates multiple chunking techniques to optimize
@@ -1131,6 +1207,7 @@
               </div>
             </div>
           </a>
+
           <a
             href="https://github.com/BigDataIA-Spring2025-4/DAMG7245_Assignment03_Part02.git"
             class="project-card"
@@ -1153,15 +1230,16 @@
                 <span class="tech-tag">Snowpark</span>
                 <span class="tech-tag">GitHub Actions</span>
                 <span class="tech-tag">AWS S3</span>
-                <span class="tech-tag">AWS S3</span>
                 <span class="tech-tag">Docker</span>
                 <span class="tech-tag">Google Cloud Run</span>
               </div>
             </div>
           </a>
+
+          <!-- Hidden Projects -->
           <a
             href="https://github.com/BigDataIA-Spring2025-4/DAMG7245_Assignment02.git"
-            class="project-card"
+            class="project-card hidden"
             target="_blank"
             rel="noopener noreferrer"
           >
@@ -1179,21 +1257,22 @@
                 <span class="tech-tag">Airflow</span>
                 <span class="tech-tag">DBT</span>
                 <span class="tech-tag">FastAPI</span>
-                <span class="tech-tag">Streamlot</span>
+                <span class="tech-tag">Streamlit</span>
                 <span class="tech-tag">AWS S3</span>
                 <span class="tech-tag">Docker</span>
                 <span class="tech-tag">Google Cloud Run</span>
               </div>
             </div>
           </a>
+
           <a
             href="https://github.com/yohanmarkose/Electric_Car_Emission_impact--Baysian_Statistics.git"
-            class="project-card"
+            class="project-card hidden"
             target="_blank"
             rel="noopener noreferrer"
           >
             <div class="project-header">
-              <h3>Electric Car Emission impact - Baysian Statistics</h3>
+              <h3>Electric Car Emission impact - Bayesian Statistics</h3>
             </div>
             <div class="project-content">
               <p>
@@ -1208,25 +1287,22 @@
                 turning points to understand key contributing factors Created
                 forecasting models using Bayesian statistics to project future
                 emission trends and simulate long-term environmental impact
-                scenarios"
+                scenarios.
               </p>
               <div class="project-tech">
-                <span class="tech-tag">MCP Servers</span>
-                <span class="tech-tag">LangGraph</span>
-                <span class="tech-tag">LangChain</span>
-                <span class="tech-tag">Snowflake</span>
-                <span class="tech-tag">Pinecone</span>
-                <span class="tech-tag">FastAPI</span>
-                <span class="tech-tag">Streamlit</span>
-                <span class="tech-tag">AWS S3</span>
-                <span class="tech-tag">Docker</span>
-                <span class="tech-tag">Google Cloud Run</span>
+                <span class="tech-tag">Python</span>
+                <span class="tech-tag">Bayesian Statistics</span>
+                <span class="tech-tag">NumPy</span>
+                <span class="tech-tag">Pandas</span>
+                <span class="tech-tag">Matplotlib</span>
+                <span class="tech-tag">Seaborn</span>
               </div>
             </div>
           </a>
+
           <a
-            href="https://github.com/yohanmarkose/Electric_Car_Emission_impact--Baysian_Statistics.git"
-            class="project-card"
+            href="https://github.com/yohanmarkose/Python_mini_projects.git"
+            class="project-card hidden"
             target="_blank"
             rel="noopener noreferrer"
           >
@@ -1235,19 +1311,24 @@
             </div>
             <div class="project-content">
               <p>
-               Contains mini projects using python and some of its common libraries.
-                Projects include: 
-                <ul>
-                  <li>Snake Game</li>
-                  <li>Ping Pong</li>
-                  <li>Flash Card (To learn French)</li>
-                </ul>
+                Contains mini projects using Python and some of its common
+                libraries. Projects include: Snake Game, Ping Pong, Flash Card
+                (To learn French)
               </p>
               <div class="project-tech">
                 <span class="tech-tag">Python</span>
+                <span class="tech-tag">Tkinter</span>
+                <span class="tech-tag">Pygame</span>
               </div>
             </div>
           </a>
+        </div>
+
+        <!-- Show More/Less Button -->
+        <div class="projects-toggle">
+          <button class="show-more-btn" id="showMoreBtn">
+            Show More Projects
+          </button>
         </div>
       </div>
     </section>
@@ -1284,6 +1365,34 @@
                 Mar Athanasius College of Engineering | Kerala, India
               </div>
             </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Certifications Section -->
+    <section id="certifications">
+      <div class="section-content">
+        <h2 class="section-title">Certifications</h2>
+        <div class="certifications-grid">
+          <div class="certification-card">
+            <span class="certification-icon">🏆</span>
+            <h3 class="certification-title">IBM Data Science</h3>
+            <div class="certification-date">Jun 2024</div>
+          </div>
+          <div class="certification-card">
+            <span class="certification-icon">📊</span>
+            <h3 class="certification-title">
+              Microsoft Certified: Power BI Data Analyst Associate
+            </h3>
+            <div class="certification-date">Dec 2022</div>
+          </div>
+          <div class="certification-card">
+            <span class="certification-icon">🐍</span>
+            <h3 class="certification-title">
+              PCAP - Certified Associate In Python Programming
+            </h3>
+            <div class="certification-date">Nov 2021</div>
           </div>
         </div>
       </div>
@@ -1367,6 +1476,42 @@
         });
       });
 
+      // Show More/Less Projects Toggle
+      const showMoreBtn = document.getElementById("showMoreBtn");
+      const hiddenProjects = document.querySelectorAll(".project-card.hidden");
+      let projectsExpanded = false;
+
+      showMoreBtn.addEventListener("click", () => {
+        if (!projectsExpanded) {
+          // Show hidden projects
+          hiddenProjects.forEach((project, index) => {
+            setTimeout(() => {
+              project.classList.remove("hidden");
+              project.style.opacity = "0";
+              project.style.animation = `fadeIn 0.6s ease ${
+                index * 0.1
+              }s forwards`;
+            }, index * 100);
+          });
+          showMoreBtn.textContent = "Show Less Projects";
+          projectsExpanded = true;
+        } else {
+          // Hide projects
+          hiddenProjects.forEach((project) => {
+            project.classList.add("hidden");
+            project.style.animation = "none";
+          });
+          showMoreBtn.textContent = "Show More Projects";
+          projectsExpanded = false;
+
+          // Scroll back to projects section
+          document.getElementById("projects").scrollIntoView({
+            behavior: "smooth",
+            block: "start",
+          });
+        }
+      });
+
       // Smooth scroll for navigation links
       document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
         anchor.addEventListener("click", function (e) {
@@ -1439,14 +1584,29 @@
             }
 
             // Animate project cards with delay
-            if (entry.target.querySelector(".project-card")) {
-              const projectCards =
-                entry.target.querySelectorAll(".project-card");
+            if (entry.target.querySelector(".project-card:not(.hidden)")) {
+              const projectCards = entry.target.querySelectorAll(
+                ".project-card:not(.hidden)"
+              );
               projectCards.forEach((card, index) => {
                 card.style.opacity = "0";
                 setTimeout(() => {
                   card.style.opacity = "1";
                   card.style.animation = `fadeIn 0.6s ease forwards`;
+                }, index * 100);
+              });
+            }
+
+            // Animate certification cards with delay
+            if (entry.target.querySelector(".certification-card")) {
+              const certificationCards = entry.target.querySelectorAll(
+                ".certification-card"
+              );
+              certificationCards.forEach((card, index) => {
+                card.style.opacity = "0";
+                setTimeout(() => {
+                  card.style.opacity = "1";
+                  card.style.animation = `fadeInUp 0.6s ease forwards`;
                 }, index * 100);
               });
             }
@@ -1474,10 +1634,22 @@
             }
 
             // Reset animations for project cards
-            if (entry.target.querySelector(".project-card")) {
-              const projectCards =
-                entry.target.querySelectorAll(".project-card");
+            if (entry.target.querySelector(".project-card:not(.hidden)")) {
+              const projectCards = entry.target.querySelectorAll(
+                ".project-card:not(.hidden)"
+              );
               projectCards.forEach((card) => {
+                card.style.opacity = "0";
+                card.style.animation = "none";
+              });
+            }
+
+            // Reset animations for certification cards
+            if (entry.target.querySelector(".certification-card")) {
+              const certificationCards = entry.target.querySelectorAll(
+                ".certification-card"
+              );
+              certificationCards.forEach((card) => {
                 card.style.opacity = "0";
                 card.style.animation = "none";
               });
@@ -1546,7 +1718,7 @@
 
       // Add smooth hover effects to cards
       document
-        .querySelectorAll(".project-card, .skill-card")
+        .querySelectorAll(".project-card, .skill-card, .certification-card")
         .forEach((card) => {
           card.addEventListener("mouseenter", function () {
             this.style.transition = "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)";
