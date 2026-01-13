@@ -1150,6 +1150,40 @@
         <div class="projects-grid" id="projectsGrid">
           <!-- Initially Visible Projects -->
           <a
+            href="https://github.com/yohanmarkose/Diffusion_for_Poem_Generation-Research_Project.git"
+            class="project-card"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <div class="project-header">
+              <h3>Diffusion Model for Creative Text Generation (Research Project)</h3>
+            </div>
+            <div class="project-content">
+              <div class="project-description collapsed">
+                <p>
+                  This research adapts diffusion models from image generation to Shakespearean sonnet creation. 
+                  The core innovation uses weight-tied decoding with trainable 768-dim embeddings optimized for both denoising and reconstruction. 
+                  A U-Net architecture with positional conditioning guides generation across 60K+ n-gram samples. Results demonstrate authentic Shakespearean vocabulary and creative diversity, though transformers maintain superior grammatical coherence, revealing complementary strengths for controllable creative text generation.
+                </p>
+              </div>
+              <button
+                class="expand-btn"
+                onclick="toggleDescription(event, this)"
+              >
+                Read More
+              </button>
+              <div class="project-tech">
+                <span class="tech-tag">PyTorch</span>
+                <span class="tech-tag">TensorFlow</span>
+                <span class="tech-tag">U-Net</span>
+                <span class="tech-tag">Attention</span>
+                <span class="tech-tag">Custom Embeddings</span>
+                <span class="tech-tag">Transformer Architecture</span>
+              </div>
+            </div>
+          </a>
+          
+          <a
             href="https://github.com/yohanmarkose/Venture-Scope.git"
             class="project-card"
             target="_blank"
